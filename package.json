@@ -1,0 +1,35 @@
+{
+  "name": "ci",
+  "author": {
+    "name": "William Riley-Land",
+    "email": "william@kun.io",
+    "url": "http://kun.io/wprl"
+  },
+  "homepage": "https://github.com/Kunio-App-Studio-LLC/ci",
+  "version": "0.0.1",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --bail"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kunio-App-Studio-LLC/ci.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Kunio-App-Studio-LLC/ci/issues/new",
+    "email": "william@kun.io"
+  },
+  "license": "MIT",
+  "description": "",
+  "keywords": [],
+  "dependencies": {},
+  "peerDependencies": {},
+  "devDependencies": {
+    "event-stream": "^3.3.0",
+    "gulp": "^3.8.11",
+    "gulp-docco": "0.0.4",
+    "gulp-eslint": "^0.9.0",
+    "rimraf": "^2.3.2"
+  },
+  "contributors": []
+}
