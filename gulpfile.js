@@ -51,3 +51,9 @@ gulp.task('lint', function () {
     .pipe(eslint.format())
     .pipe(eslint.failOnError());
 });
+// Update outdated npm modules
+gulp.task('update', function (callback) {
+  var exec = require('child_process').exec;
+  exec('npm-update-outdated', callback);
+});
+
