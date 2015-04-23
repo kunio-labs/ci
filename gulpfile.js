@@ -4,6 +4,14 @@
 var gulp = require('gulp');
 var es = require('event-stream');
 
+// ## Paths
+var paths = {
+  javascript: './**/*.js',
+  exclude: {
+    build: 'build/**/*.js'
+  },
+};
+
 // Show more error detail.
 gulp.onAll(function (e) {
   if (!e.err) return;
@@ -37,8 +45,9 @@ gulp.task('clean.documentation', function (callback) {
 });
 // Run linters.
 gulp.task('lint', function () {
-  var jshint = require('gulp-jshint');
-  gulp.src([ paths.javascript, paths.exclude.npm, paths.exclude.build ])
-    .pipe(jshint('./jshint.json'))
-    .pipe(jshint.reporter('default'));
+  var eslint = require('gulp-eslint');
+  gulp.src([ paths.javascript, paths.exclude.build ])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failOnError());
 });
