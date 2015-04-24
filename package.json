@@ -23,15 +23,15 @@
   "description": "",
   "keywords": [],
   "dependencies": {
+    "gulp-docco": "0.0.4",
+    "gulp-eslint": "^0.9.0",
+    "npm-update-outdated": "^0.1.4",
+    "rimraf": "^2.3.2",
     "through2": "^0.6.5"
   },
   "peerDependencies": {},
   "devDependencies": {
-    "gulp": "^3.8.11",
-    "gulp-docco": "0.0.4",
-    "gulp-eslint": "^0.9.0",
-    "npm-update-outdated": "^0.1.4",
-    "rimraf": "^2.3.2"
+    "gulp": "^3.8.11"
   },
   "contributors": []
 }
