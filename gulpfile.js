@@ -1,15 +1,13 @@
 // # Gulpfile — automate development tasks.
 'use strict';
+
 // ## Dependencies
 var gulp = require('gulp');
-var es = require('event-stream');
+var ci = require('./index.js');
 
 // ## Paths
 var paths = {
   javascript: './**/*.js',
-  exclude: {
-    build: 'build/**/*.js'
-  },
 };
 
 // Show more error detail.
@@ -32,28 +30,20 @@ function done (callback) {
 // ## Tasks
 // Generate source code documentation.
 gulp.task('document', ['clean.documentation'], function () {
-  var docco = require('gulp-docco');
-  gulp.src('./**/*.js')
-    .pipe(docco())
-    .pipe(gulp.dest('./documentation/generated'));
+  var dest = gulp.dest('./documentation/generated');
+  gulp.src([ paths.javascript ])
+    .pipe(ci.document(dest));
 });
+
 // Delete generated documentation.
-gulp.task('clean.documentation', function (callback) {
-  var rimraf = require('rimraf');
-  // Clean the build directory.
-  rimraf('./documentation/generated', callback);
-});
+gulp.task('clean.documentation', ci.cleanDocumentation);
+
 // Run linters.
 gulp.task('lint', function () {
-  var eslint = require('gulp-eslint');
-  gulp.src([ paths.javascript, paths.exclude.build ])
-    .pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failOnError());
+  gulp.src([ paths.javascript ])
+    .pipe(ci.lint());
 });
+
 // Update outdated npm modules
-gulp.task('update', function (callback) {
-  var exec = require('child_process').exec;
-  exec('npm-update-outdated', callback);
-});
+gulp.task('update', ci.update);
 
